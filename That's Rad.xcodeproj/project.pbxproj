@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DBAA1B321AD5A0140011A77F /* SpinHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBAA1B311AD5A0140011A77F /* SpinHeaderViewController.m */; };
 		DBFCA9FF1A9BA71500FAD701 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFCA9FE1A9BA71500FAD701 /* main.m */; };
 		DBFCAA021A9BA71500FAD701 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFCAA011A9BA71500FAD701 /* AppDelegate.m */; };
 		DBFCAA051A9BA71500FAD701 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFCAA041A9BA71500FAD701 /* ViewController.m */; };
@@ -14,6 +15,7 @@
 		DBFCAA0A1A9BA71500FAD701 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBFCAA091A9BA71500FAD701 /* Images.xcassets */; };
 		DBFCAA0D1A9BA71500FAD701 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBFCAA0B1A9BA71500FAD701 /* LaunchScreen.xib */; };
 		DBFCAA191A9BA71500FAD701 /* That_s_RadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DBFCAA181A9BA71500FAD701 /* That_s_RadTests.m */; };
+		DBFCAA231A9BAD6F00FAD701 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFCAA221A9BAD6F00FAD701 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DBAA1B301AD5A0140011A77F /* SpinHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinHeaderViewController.h; sourceTree = "<group>"; };
+		DBAA1B311AD5A0140011A77F /* SpinHeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinHeaderViewController.m; sourceTree = "<group>"; };
 		DBFCA9F91A9BA71500FAD701 /* That's Rad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "That's Rad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFCA9FD1A9BA71500FAD701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBFCA9FE1A9BA71500FAD701 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +44,7 @@
 		DBFCAA121A9BA71500FAD701 /* That's RadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "That's RadTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFCAA171A9BA71500FAD701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBFCAA181A9BA71500FAD701 /* That_s_RadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = That_s_RadTests.m; sourceTree = "<group>"; };
+		DBFCAA221A9BAD6F00FAD701 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBFCAA231A9BAD6F00FAD701 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +69,7 @@
 		DBFCA9F01A9BA71500FAD701 = {
 			isa = PBXGroup;
 			children = (
+				DBFCAA221A9BAD6F00FAD701 /* CoreLocation.framework */,
 				DBFCA9FB1A9BA71500FAD701 /* That's Rad */,
 				DBFCAA151A9BA71500FAD701 /* That's RadTests */,
 				DBFCA9FA1A9BA71500FAD701 /* Products */,
@@ -86,6 +93,8 @@
 				DBFCAA031A9BA71500FAD701 /* ViewController.h */,
 				DBFCAA041A9BA71500FAD701 /* ViewController.m */,
 				DBFCAA061A9BA71500FAD701 /* Main.storyboard */,
+				DBAA1B301AD5A0140011A77F /* SpinHeaderViewController.h */,
+				DBAA1B311AD5A0140011A77F /* SpinHeaderViewController.m */,
 				DBFCAA091A9BA71500FAD701 /* Images.xcassets */,
 				DBFCAA0B1A9BA71500FAD701 /* LaunchScreen.xib */,
 				DBFCA9FC1A9BA71500FAD701 /* Supporting Files */,
@@ -168,9 +177,11 @@
 				TargetAttributes = {
 					DBFCA9F81A9BA71500FAD701 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = ACPGVPPM2P;
 					};
 					DBFCAA111A9BA71500FAD701 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = ACPGVPPM2P;
 						TestTargetID = DBFCA9F81A9BA71500FAD701;
 					};
 				};
@@ -222,6 +233,7 @@
 				DBFCAA051A9BA71500FAD701 /* ViewController.m in Sources */,
 				DBFCAA021A9BA71500FAD701 /* AppDelegate.m in Sources */,
 				DBFCA9FF1A9BA71500FAD701 /* main.m in Sources */,
+				DBAA1B321AD5A0140011A77F /* SpinHeaderViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +377,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -376,6 +390,7 @@
 				INFOPLIST_FILE = "That's RadTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/That's Rad.app/That's Rad";
 			};
 			name = Debug;
@@ -384,6 +399,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -391,6 +408,7 @@
 				INFOPLIST_FILE = "That's RadTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/That's Rad.app/That's Rad";
 			};
 			name = Release;
@@ -414,6 +432,7 @@
 				DBFCAA1E1A9BA71500FAD701 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DBFCAA1F1A9BA71500FAD701 /* Build configuration list for PBXNativeTarget "That's RadTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +441,7 @@
 				DBFCAA211A9BA71500FAD701 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
