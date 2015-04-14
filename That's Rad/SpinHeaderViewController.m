@@ -27,16 +27,24 @@ int previous;
 int i = 1;
 double f = .1;
 double j=.01;
+int mySpin2;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+- (void) viewDidAppear:(BOOL)animated{
+    j = 0;
+    i = 0;
+    f = 0;
+    mySpin = 0;
+    mySpin2 = 0;
     self.locationManager = [[CLLocationManager alloc] init];
-     self.locationManager.delegate = self;
-     [self.locationManager startUpdatingHeading];
-     [self.locationManager startUpdatingLocation];
-     NSTimer *aTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(aTime) userInfo:nil repeats:YES];
+    self.locationManager.delegate = self;
+    [self.locationManager startUpdatingHeading];
+    [self.locationManager startUpdatingLocation];
+    NSTimer *aTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(aTime) userInfo:nil repeats:YES];
     NSTimer *bTimer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(bTime) userInfo:nil repeats:YES];
-     NSTimer *cTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(cTime) userInfo:nil repeats:YES];
+    NSTimer *cTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(cTime) userInfo:nil repeats:YES];
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
@@ -64,7 +72,7 @@ double j=.01;
         spin2Heading = 360;
     }
     if(mHeading > spinHeading && upGo){
-        if(mHeading - spinHeading<100){
+        if(mHeading - spinHeading<250){
             counter += mHeading - spinHeading;
             spinHeading = mHeading;
             if(counter >= 360){
@@ -75,7 +83,8 @@ double j=.01;
     }
     
     else if(mHeading < spin2Heading && downGo){
-        if(spin2Heading - mHeading < 100){counter2 += spin2Heading-mHeading;
+        if(spin2Heading - mHeading < 250){
+            counter2 += spin2Heading-mHeading;
             spin2Heading = mHeading;
             if(counter2 >= 360){
                 counter2 = counter2-360;
@@ -107,11 +116,12 @@ double j=.01;
         self.rsg.text = [NSString stringWithFormat:@"%s", "Go!"];
     }
     else if(i<64){
+        mySpin2 = mySpin;
         self.Main.text = [NSString stringWithFormat:@"%d", mySpin];
-        self.rsg.text = [NSString stringWithFormat:@"%d %s",60 - i + 4, ":" ];
+        self.rsg.text = [NSString stringWithFormat:@"%.2f",60 - j+ 5 ];
     }
     else{
-        self.rsg.text = [NSString stringWithFormat:@"%s %d %s", "You got", mySpin, "spins"];
+        self.rsg.text = [NSString stringWithFormat:@"%s %d %s", "You got", mySpin2, "spins"];
     }
     j = j+.01;
 }

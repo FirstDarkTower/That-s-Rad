@@ -95,7 +95,7 @@ int k = 1;
     else{
        self.correctLabel.text = [NSString stringWithFormat: @"%s", "NOPE"];
         }
-    self.countSpin.text = [NSString stringWithFormat: @"%s %i %s", "You are at", mySpin, "Spins"];
+    self.countSpin.text = [NSString stringWithFormat: @"%s %i %s", "You are at", counter, "Spins"];
     previous = mHeading;
 }
 -(void)aTime
