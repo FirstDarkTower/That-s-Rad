@@ -1,4 +1,4 @@
-//
+
 //  ViewController.m
 //  That's Rad
 //
@@ -49,12 +49,12 @@ int k = 1;
     }
     
     mHeading = newHeading.trueHeading;
-    if(mHeading <10 && previous > 350){
+    if(mHeading <100 && previous > 260){
         downGo = false;
         upGo = true;
         spinHeading = 0;
     }
-    if(mHeading> 350 && previous< 10){
+    if(mHeading> 260 && previous< 100){
         upGo = false;
         downGo = true;
         spin2Heading = 360;
