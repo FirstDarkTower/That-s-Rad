@@ -13,9 +13,9 @@
 @end
 
 @implementation SpinHeaderViewController
-int x = 0;
+int x = -1;
 int myGoal;
-int mHeading;
+int mHeading = 0;
 int mySpin;
 int counter;
 int counter2;
@@ -36,64 +36,106 @@ int mySpin2;
     j = 0;
     i = 0;
     f = 0;
+    x = -1;
     mySpin = 0;
     mySpin2 = 0;
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     [self.locationManager startUpdatingHeading];
     [self.locationManager startUpdatingLocation];
-    NSTimer *aTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(aTime) userInfo:nil repeats:YES];
-    NSTimer *bTimer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(bTime) userInfo:nil repeats:YES];
-    NSTimer *cTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(cTime) userInfo:nil repeats:YES];
+
 }
 
+-(void)chooseDirection{
+    if(previous >300 && mHeading < 60){
+        upGo = true;
+        downGo = false;
+        x = 1;
+        NSTimer *aTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(aTime) userInfo:nil repeats:YES];
+        NSTimer *bTimer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(bTime) userInfo:nil repeats:YES];
+        NSTimer *cTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(cTime) userInfo:nil repeats:YES];
+        self.Main.text = [NSString stringWithFormat:@"%s", "Great!"];
+        counter = 0;
+        counter2 = 0;
+    }
+    else if (previous < 60 && mHeading > 300){
+        downGo = true;
+        upGo = false;
+        x = 1;
+        NSTimer *aTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(aTime) userInfo:nil repeats:YES];
+        NSTimer *bTimer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(bTime) userInfo:nil repeats:YES];
+        NSTimer *cTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(cTime) userInfo:nil repeats:YES];
+        self.Main.text = [NSString stringWithFormat:@"%s", "GREAT"];
+        counter = 0;
+        counter2 = 0;
+    }
+    else{
+        self.Main.text = [NSString stringWithFormat:@"%s", "Spin slowly in your desired direction of travel"];
+        previous = mHeading;
+    }
+}
 -(void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
+    if ( x == -1){
+        previous = newHeading.trueHeading;
+        x= 0;
+    }
     if(x==0){
-        x=1;
+        mHeading = newHeading.trueHeading;
+        [self performSelector:@selector(chooseDirection) withObject:nil afterDelay:0.0];
         mySpin = 0;
         spinHeading = newHeading.trueHeading;
         spin2Heading = newHeading.trueHeading;
         counter = 0;
         counter2 = 0;
-        upGo = true;
-        downGo = true;
+    }
+    else if (i>6){
+    mHeading = newHeading.trueHeading;
+        if(upGo){
+            if(mHeading > previous){
+                counter += mHeading - previous;
+            }
+            else if(mHeading < previous){
+                int test = mHeading;
+                test += 360 - previous;
+                
+                if(test < 300){
+                    counter += test;
+                }
+                else{
+                    
+
+                }
+            }
+            if (counter >= 360){
+                mySpin++;
+                counter = counter - 360;
+            }
+        }
+        if(downGo){
+            if(mHeading < previous){
+                counter += previous - mHeading;
+            }
+            else if(mHeading > previous){
+                int test = previous;
+                test += 360 - mHeading;
+                if(test< 300){
+                    counter += test;
+                }
+                else{
+                    
+
+                }
+            }
+            if (counter >= 360){
+                mySpin++;
+                counter = counter - 360;
+            }
+        }
         previous = mHeading;
     }
-    
-    mHeading = newHeading.trueHeading;
-    if(mHeading <10 && previous > 350){
-        downGo = false;
-        upGo = true;
-        spinHeading = 0;
+    else{
+         previous = mHeading;
     }
-    if(mHeading> 350 && previous< 10){
-        upGo = false;
-        downGo = true;
-        spin2Heading = 360;
-    }
-    if(mHeading > spinHeading && upGo){
-        if(mHeading - spinHeading<250){
-            counter += mHeading - spinHeading;
-            spinHeading = mHeading;
-            if(counter >= 360){
-                counter = counter-360;
-                mySpin++;
-            }
-        }
-    }
-    
-    else if(mHeading < spin2Heading && downGo){
-        if(spin2Heading - mHeading < 250){
-            counter2 += spin2Heading-mHeading;
-            spin2Heading = mHeading;
-            if(counter2 >= 360){
-                counter2 = counter2-360;
-                mySpin++;
-            }
-        }
-    }
-    
-    
     
 }
 
